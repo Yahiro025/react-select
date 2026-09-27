@@ -1305,6 +1305,7 @@ export default class Select<
     if (event.defaultPrevented) {
       return;
     }
+    event.stopPropagation();
     const { openMenuOnClick } = this.props;
     if (!this.state.isFocused) {
       if (openMenuOnClick) {
