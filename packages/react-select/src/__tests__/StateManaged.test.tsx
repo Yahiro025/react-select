@@ -120,6 +120,20 @@ test('closes the menu when a focused parent wraps the select', () => {
   expect(container.querySelector('.react-select__menu')).not.toBeInTheDocument();
   expect(onBlurSpy).toHaveBeenCalledTimes(1);
   expect(onMenuCloseSpy).toHaveBeenCalledTimes(1);
+
+  fireEvent.mouseDown(
+    container.querySelector('.react-select__dropdown-indicator')!,
+    { button: 0 }
+  );
+
+  expect(container.querySelector('.react-select__menu')).toBeInTheDocument();
+  expect(onMenuCloseSpy).toHaveBeenCalledTimes(1);
+
+  userEvent.click(getByRole('button', { name: 'Outside' }));
+
+  expect(container.querySelector('.react-select__menu')).not.toBeInTheDocument();
+  expect(onBlurSpy).toHaveBeenCalledTimes(2);
+  expect(onMenuCloseSpy).toHaveBeenCalledTimes(2);
 });
 
 test('If menuIsOpen prop is passed Menu should not close on clicking Dropdown Indicator', () => {
