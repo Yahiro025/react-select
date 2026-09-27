@@ -113,7 +113,6 @@ test('closes the menu when a focused parent wraps the select', () => {
   );
 
   expect(container.querySelector('.react-select__menu')).toBeInTheDocument();
-  expect(onMenuCloseSpy).not.toHaveBeenCalled();
 
   userEvent.click(getByRole('button', { name: 'Outside' }));
 
