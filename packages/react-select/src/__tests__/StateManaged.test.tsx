@@ -107,17 +107,18 @@ test('closes the menu when a focused parent wraps the select', () => {
     </>
   );
 
-  fireEvent.mouseDown(
-    container.querySelector('.react-select__control')!,
-    { button: 0 }
-  );
+  fireEvent.mouseDown(container.querySelector('.react-select__control')!, {
+    button: 0,
+  });
 
   expect(container.querySelector('.react-select__menu')).toBeInTheDocument();
   expect(onMenuCloseSpy).not.toHaveBeenCalled();
 
   userEvent.click(getByRole('button', { name: 'Outside' }));
 
-  expect(container.querySelector('.react-select__menu')).not.toBeInTheDocument();
+  expect(
+    container.querySelector('.react-select__menu')
+  ).not.toBeInTheDocument();
   expect(onBlurSpy).toHaveBeenCalledTimes(1);
   expect(onMenuCloseSpy).toHaveBeenCalledTimes(1);
 
@@ -131,7 +132,9 @@ test('closes the menu when a focused parent wraps the select', () => {
 
   userEvent.click(getByRole('button', { name: 'Outside' }));
 
-  expect(container.querySelector('.react-select__menu')).not.toBeInTheDocument();
+  expect(
+    container.querySelector('.react-select__menu')
+  ).not.toBeInTheDocument();
   expect(onBlurSpy).toHaveBeenCalledTimes(2);
   expect(onMenuCloseSpy).toHaveBeenCalledTimes(2);
 });
